@@ -15,7 +15,7 @@ public abstract class Weapon : MonoBehaviour
 
     public void Firing(bool down) {
         if (((FireType == WeaponFireType.SemiAuto && down) || (FireType == WeaponFireType.FullAuto))
-            && Time.time - lastFireTime > 0.03f) {
+            && Time.time - lastFireTime > FireInterval) {
             if (OnFire()) {
                 lastFireTime = Time.time;
             }

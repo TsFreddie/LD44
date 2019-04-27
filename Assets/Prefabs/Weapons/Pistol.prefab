@@ -129,10 +129,12 @@ MonoBehaviour:
   Target:
     serializedVersion: 2
     m_Bits: 1024
-  FireType: 0
+  FireType: 1
   FirePoint: {fileID: 5042670871289838362}
   BulletPrefab: {fileID: 2447613305788419826, guid: 299bbd5cabe6e4b4c9311197a8fbacd3,
     type: 3}
+  BulletSpeed: 15
+  BulletLifespan: 1.5
 --- !u!1 &8973952703162145323
 GameObject:
   m_ObjectHideFlags: 0

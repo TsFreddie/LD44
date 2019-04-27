@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalBullet : MonoBehaviour, Bullet
+public class NormalBullet : MonoBehaviour, IBullet
 {
     public float FireAngle = 0;
     public float Speed = 10f;

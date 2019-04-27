@@ -6,6 +6,14 @@ public class GenericBulletFirer : Weapon
 {
     public Transform FirePoint;
     public GameObject BulletPrefab;
+    public float BulletSpeed = 15f;
+    public float BulletLifespan = 1.5f;
+
+    public float BulletRange {
+        get {
+            return BulletSpeed * BulletLifespan;
+        }
+    }
 
     protected override bool OnFire() {
         GameObject newBullet = Instantiate(BulletPrefab);
@@ -13,9 +21,14 @@ public class GenericBulletFirer : Weapon
         NormalBullet bulletData = newBullet.AddComponent<NormalBullet>();
         bulletData.Damage = Damage;
         bulletData.FireAngle = transform.rotation.eulerAngles.z;
-        bulletData.Speed = 15f;
-        bulletData.Lifespan = 1.5f;
+        bulletData.Speed = BulletSpeed;
+        bulletData.Lifespan = BulletLifespan;
         bulletData.Target = Target;
         return true;
+    }
+
+    void OnDrawGizmosSelected() {
+        Vector2 line = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
+        Gizmos.DrawLine((Vector2)FirePoint.position, (Vector2)FirePoint.position + line * BulletRange);
     }
 }

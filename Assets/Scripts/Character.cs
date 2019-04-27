@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     public GameObject AimAnchor;
     public GameObject EyeGroup;
+    public LayerMask Target;
     private List<Weapon> weapons;
     public int activeWeapon = -1;
     private Walkable walk;
@@ -78,6 +79,7 @@ public class Character : MonoBehaviour
         newWeapon.transform.localPosition = Vector3.zero;
         newWeapon.SetActive(true);
         Weapon weaponObj = newWeapon.GetComponent<Weapon>();
+        weaponObj.Target = Target;
         if (weaponObj == null) {
             Destroy(newWeapon);
             return;

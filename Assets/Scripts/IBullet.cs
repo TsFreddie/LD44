@@ -1,4 +1,4 @@
-interface Bullet {
+interface IBullet {
     int GetDamage();
     void ReportHit();
 }

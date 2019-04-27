@@ -12,16 +12,23 @@ public class Walkable : MonoBehaviour
     public float GroundFriction = 25f;
     public float JumpVelocity = 13.2f;
     public float AirJumpVelocity = 12.0f;
-    public Transform GroundCheckPoint;
     public int MaxJumps = 2;
+    private new Collider2D collider;
     private new Rigidbody2D rigidbody;
     private int move;
     private bool grounded;
     private int jumps;
     private bool jumping;
+    private Vector3 groundCheckPoint;
     public int Move {
         set {
             this.move = value;
+        }
+    }
+
+    public Collider2D Collider {
+        get {
+            return collider;
         }
     }
 
@@ -31,6 +38,7 @@ public class Walkable : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         move = 0;
         jumps = 0;
         grounded = false;
@@ -38,10 +46,8 @@ public class Walkable : MonoBehaviour
 
     void Update()
     {
-        if (GroundCheckPoint == null) {
-            return;
-        }
-        grounded = Physics2D.OverlapPoint(GroundCheckPoint.position, 1 << LayerMask.NameToLayer("Ground"));
+        groundCheckPoint = collider.ClosestPoint((Vector2)transform.position + Vector2.down * 100f) + Vector2.down * 0.05f;
+        grounded = Physics2D.OverlapPoint(groundCheckPoint, 1 << LayerMask.NameToLayer("Ground"));
         if (grounded) {
             jumps = MaxJumps;
         }
