@@ -13,6 +13,7 @@ public class SpriteCursor : MonoBehaviour
     void Update()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         Vector2 mousePos = Input.mousePosition;
         transform.position = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
     }

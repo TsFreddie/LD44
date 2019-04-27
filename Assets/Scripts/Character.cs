@@ -1,14 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
     public GameObject AimPoint;
     public GameObject EyeGroup;
+    public GameObject WeaponAnchor;
+    private List<Weapon> weapons;
+    public int activeWeapon = -1;
     private Walkable walk;
+
+    void Awake() {
+        weapons = new List<Weapon>();
+        activeWeapon = -1;
+    }
     void Start()
     {
+        Scene inGameUI = SceneManager.GetSceneByName("InGameUI");
+        if (!inGameUI.IsValid()) {
+            SceneManager.LoadScene("InGameUI", LoadSceneMode.Additive);
+        }
+        
         walk = GetComponent<Walkable>();
     }
 
@@ -43,6 +57,29 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             walk.Jump();
+        }
+
+        if (activeWeapon >= 0) {
+            if (Input.GetMouseButtonDown(0)) {
+                weapons[activeWeapon].Firing(true);
+            } else if (Input.GetMouseButton(0)) {
+                weapons[activeWeapon].Firing(false);
+            }
+        }
+    }
+
+    public void GiveWeapon(GameObject weaponPrefab) {
+        GameObject newWeapon = Instantiate(weaponPrefab);
+        newWeapon.transform.SetParent(WeaponAnchor.transform);
+        newWeapon.transform.localPosition = Vector3.zero;
+        Weapon weaponObj = newWeapon.GetComponent<Weapon>();
+        if (weaponObj == null) {
+            Destroy(newWeapon);
+            return;
+        }
+        weapons.Add(weaponObj);
+        if (activeWeapon < 0) {
+            activeWeapon = 0;
         }
     }
 

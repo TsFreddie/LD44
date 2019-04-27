@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: fdf2d725641f390438db0fe3f25dab97
+guid: 9602cc43b6bfa7042a205d5ebb596069
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Body
-    21300002: Foot
-    21300004: Crosshair
-    21300006: Eye
-    21300008: Hand
-    21300010: Pistol
-    21300012: PistolBullet
+    21300000: Heart
+    21300002: HeartEmpty
+    21300004: HeartFill
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -52,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,141 +98,61 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Body
+      name: Heart
       rect:
         serializedVersion: 2
         x: 0
-        y: 759
-        width: 265
-        height: 265
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d322d80bfc57bb1409b7495bddb2fc3d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Foot
-      rect:
-        serializedVersion: 2
-        x: 287
-        y: 941
-        width: 149
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e2b352da27e79a4b98dd4c46adb3fc8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crosshair
-      rect:
-        serializedVersion: 2
-        x: 476
-        y: 934
-        width: 84
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5a6b3598403c3e498026e156212cb98
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eye
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 856
-        width: 25
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b507248403e89f94d8b33b257a6da42b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand
-      rect:
-        serializedVersion: 2
-        x: 356
-        y: 840
+        y: 951
         width: 68
-        height: 72
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cc47a58c1044324883fbb4860718f30
+      spriteID: b547338046726384dbee7b7190820f16
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pistol
+      name: HeartEmpty
       rect:
         serializedVersion: 2
-        x: 11
-        y: 572
-        width: 193
-        height: 141
+        x: 74
+        y: 951
+        width: 68
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0460a4707e799247b6d79f194d2d2cb
+      spriteID: 75e493ef340926d43b24d350b42f0586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PistolBullet
+      name: HeartFill
       rect:
         serializedVersion: 2
-        x: 234
-        y: 671
-        width: 30
-        height: 18
+        x: 148
+        y: 951
+        width: 68
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d092790eb2a9896468204a71f7570b47
+      spriteID: 5fb20101e6c20754fb7047b4ac4b08d3
       vertices: []
       indices: 
       edges: []
@@ -244,7 +160,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b63ddeb0669648044ab4d4d382762cef
+    spriteID: feeb6fe09fc50d845bda6433f2289eb1
     vertices: []
     indices: 
     edges: []
