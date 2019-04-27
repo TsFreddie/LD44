@@ -42,7 +42,6 @@ public class NormalBullet : MonoBehaviour, Bullet
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, collider.size, transform.eulerAngles.z, Target);
         if (hits.Length > 0) {
-            // TODO: Hurtable
             foreach (Collider2D hit in hits) {
                 Damageable damageable = hit.GetComponent<Damageable>();
                 if (damageable) {

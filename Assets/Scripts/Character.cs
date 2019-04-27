@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
-    public GameObject AimPoint;
+    public GameObject AimAnchor;
     public GameObject EyeGroup;
-    public GameObject WeaponAnchor;
     private List<Weapon> weapons;
     public int activeWeapon = -1;
     private Walkable walk;
@@ -37,17 +36,16 @@ public class Character : MonoBehaviour
         Vector2 mousePos = Input.mousePosition;
         Vector2 targetPos = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 deltaPos = (targetPos - (Vector2)transform.position).normalized;
-        AimPoint.transform.localPosition = deltaPos;
         EyeGroup.transform.localPosition = deltaPos * 0.15f;
         if (deltaPos.x < 0) {
-            AimPoint.transform.localScale = new Vector3(1, -1, 1);
+            AimAnchor.transform.localScale = new Vector3(1, -1, 1);
         } else {
-            AimPoint.transform.localScale = new Vector3(1, 1, 1);
+            AimAnchor.transform.localScale = new Vector3(1, 1, 1);
         }
 
         float angleDeg = Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
-        AimPoint.transform.rotation = rotation;
+        AimAnchor.transform.rotation = rotation;
 
         // Movement
         int move = 0;
@@ -76,8 +74,9 @@ public class Character : MonoBehaviour
 
     public void GiveWeapon(GameObject weaponPrefab) {
         GameObject newWeapon = Instantiate(weaponPrefab);
-        newWeapon.transform.SetParent(WeaponAnchor.transform);
+        newWeapon.transform.SetParent(AimAnchor.transform);
         newWeapon.transform.localPosition = Vector3.zero;
+        newWeapon.SetActive(true);
         Weapon weaponObj = newWeapon.GetComponent<Weapon>();
         if (weaponObj == null) {
             Destroy(newWeapon);
