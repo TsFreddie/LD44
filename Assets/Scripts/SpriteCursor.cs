@@ -15,6 +15,7 @@ public class SpriteCursor : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         Vector2 mousePos = Input.mousePosition;
-        transform.position = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
+        RectTransform rect = GetComponent<RectTransform>();
+        rect.position = mousePos;
     }
 }

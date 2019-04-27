@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     private List<Weapon> weapons;
     public int activeWeapon = -1;
     private Walkable walk;
+    private Damageable health;
 
     void Awake() {
         weapons = new List<Weapon>();
@@ -24,10 +25,15 @@ public class Character : MonoBehaviour
         }
         
         walk = GetComponent<Walkable>();
+        health = GetComponent<Damageable>();
     }
 
     void Update()
     {
+        if (HealthDisplay.I) {
+            HealthDisplay.I.Max = health.MaxHealth;
+            HealthDisplay.I.Value = health.Health;
+        }
         Vector2 mousePos = Input.mousePosition;
         Vector2 targetPos = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 deltaPos = (targetPos - (Vector2)transform.position).normalized;
