@@ -3,18 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthDisplay : MonoBehaviour
+public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
 {
-    private static HealthDisplay instance;
-    public static HealthDisplay I {
-        get {
-            if (instance) {
-                return instance;
-            } else {
-                return null;
-            }
-        }
-    }
     public GameObject LinePrefab;
     public GameObject HeartPrefab;
     public int Max = 0;
@@ -24,8 +14,7 @@ public class HealthDisplay : MonoBehaviour
     private List<Image> Hearts;
     private int filled = 0;
     
-    void Awake() {
-        instance = this;
+    protected override void SingletonAwake() {
         Lines = new List<Transform>();
         Hearts = new List<Image>();
     }

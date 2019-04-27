@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Walkable : MonoBehaviour
 {
-    public float AirMaxVelocity = 250f;
-    public float AirAcceleration = 1.5f;
+    public float AirMaxVelocity = 5f;
+    public float AirAcceleration = 75f;
     public float AirFriction = 47.5f;
     public float MaxVelocity = 10f;
     public float Acceleration = 100f;
