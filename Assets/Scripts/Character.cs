@@ -90,5 +90,12 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void GivePerk(GameObject perkPrefab) {
+        GameObject newPerk = Instantiate(perkPrefab);
+        newPerk.transform.SetParent(AimAnchor.transform);
+        newPerk.transform.localPosition = Vector3.zero;
+        newPerk.SetActive(true);
+    }
+
 
 }

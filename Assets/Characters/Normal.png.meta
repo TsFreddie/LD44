@@ -1,16 +1,33 @@
 fileFormatVersion: 2
 guid: fdf2d725641f390438db0fe3f25dab97
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Body
-    21300002: Foot
-    21300004: Crosshair
-    21300006: Eye
-    21300008: Hand
-    21300010: Pistol
-    21300012: PistolBullet
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Body
+  - first:
+      213: 21300002
+    second: Foot
+  - first:
+      213: 21300004
+    second: Crosshair
+  - first:
+      213: 21300006
+    second: Eye
+  - first:
+      213: 21300008
+    second: Hand
+  - first:
+      213: 21300010
+    second: Pistol
+  - first:
+      213: 21300012
+    second: PistolBullet
+  - first:
+      213: -7456154089533537550
+    second: Rope
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -49,7 +66,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 250
@@ -110,13 +127,14 @@ TextureImporter:
         width: 265
         height: 265
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d322d80bfc57bb1409b7495bddb2fc3d
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -127,16 +145,17 @@ TextureImporter:
         serializedVersion: 2
         x: 287
         y: 941
-        width: 149
+        width: 146
         height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 8e2b352da27e79a4b98dd4c46adb3fc8
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -150,13 +169,14 @@ TextureImporter:
         width: 84
         height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b5a6b3598403c3e498026e156212cb98
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -170,13 +190,14 @@ TextureImporter:
         width: 25
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b507248403e89f94d8b33b257a6da42b
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -185,18 +206,19 @@ TextureImporter:
       name: Hand
       rect:
         serializedVersion: 2
-        x: 356
-        y: 840
-        width: 68
-        height: 72
+        x: 358
+        y: 841
+        width: 65
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 0cc47a58c1044324883fbb4860718f30
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -206,17 +228,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11
-        y: 572
-        width: 193
-        height: 141
+        y: 573
+        width: 191
+        height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d0460a4707e799247b6d79f194d2d2cb
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -230,13 +253,35 @@ TextureImporter:
         width: 30
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d092790eb2a9896468204a71f7570b47
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rope
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 871
+        width: 106
+        height: 34
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 15, y: 0, z: 36, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d856e8694f278b4bb16c6797d1b854d
+      internalID: -7456154089533537550
       vertices: []
       indices: 
       edges: []
@@ -245,10 +290,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: b63ddeb0669648044ab4d4d382762cef
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

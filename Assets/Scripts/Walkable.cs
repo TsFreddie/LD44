@@ -47,7 +47,7 @@ public class Walkable : MonoBehaviour
     void Update()
     {
         groundCheckPoint = collider.ClosestPoint((Vector2)transform.position + Vector2.down * 100f) + Vector2.down * 0.05f;
-        grounded = Physics2D.OverlapPoint(groundCheckPoint, 1 << LayerMask.NameToLayer("Ground"));
+        grounded = Physics2D.OverlapPoint(groundCheckPoint, 1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Unhookable"));
         if (grounded) {
             jumps = MaxJumps;
         }
