@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Jetpack : MonoBehaviour, IUpgradable
+public class Jetpack : Upgradable
 {
     public ParticleSystem particle;
     public Image borderUI;
@@ -22,7 +22,7 @@ public class Jetpack : MonoBehaviour, IUpgradable
     private int level = 0;
     private Character character;
 
-    public void UpgradeTo(int level)
+    public override void UpgradeTo(int level)
     {
         this.level = level;
     }

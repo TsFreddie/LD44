@@ -32,7 +32,7 @@ public class Hook : MonoBehaviour
     void Update()
     {
         // FIXME: prefab scale?
-        transform.localScale = new Vector3(2.285f, 2.285f, 1);
+        // transform.localScale = new Vector3(2.285f, 2.285f, 1);
 
         if (state == 0 && Input.GetButtonDown("Use Hook")) {
             hookDir = character.AimDir;

@@ -15,11 +15,12 @@ MonoBehaviour:
   Name: Pistol
   Description: 'A little pistol. You don''t know why you have this.
 
-    Press {0} to fire.'
+    Left click to fire.'
   LevelDescription:
   - 
   - Bullet can pierce through up to 3 emenies.
   - Bullet can pierce through all emenies on its path.
+  - Fully upgraded
   ActionKeyNames:
   - Fire Weapon
   BuyIcon: {fileID: 21300010, guid: fdf2d725641f390438db0fe3f25dab97, type: 3}

@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.8018868, g: 0.9963269, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.3584906, g: 0.8955682, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.1792453, g: 0.86487585, b: 1, a: 1}
     m_PressedColor: {r: 0, g: 0.631856, b: 0.754717, a: 1}
-    m_SelectedColor: {r: 0.83137256, g: 0.972549, b: 1, a: 1}
+    m_SelectedColor: {r: 0.3490566, g: 0.89444166, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -123,7 +123,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8884976552777641167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3952903638273868854}
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &-3952903638273868854
@@ -135,15 +146,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8884976552777641164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6cc0bb9266817429c377cd679336a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 88801c55ec43bff42b6b9a188cd9af9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanBuyColor: {r: 0.54901963, g: 1, b: 0.7058824, a: 0}
-  CannotBuyColor: {r: 0.8039216, g: 1, b: 1, a: 0}
+  CanBuyColor: {r: 0.46226418, g: 1, b: 0.74316734, a: 0}
+  CannotBuyColor: {r: 0.8396226, g: 1, b: 0.98473585, a: 0}
   Name: {fileID: 8884976552964903440}
   Price: {fileID: 8884976553539068818}
   Icon: {fileID: 8884976553078444387}
   Button: {fileID: 8884976552777641166}
+  Heart: {fileID: 8884976552961807198}
+  Index: -1
 --- !u!1 &8884976552961807198
 GameObject:
   m_ObjectHideFlags: 0

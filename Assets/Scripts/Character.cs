@@ -34,7 +34,13 @@ public class Character : SingletonMonoBehaviour<Character>
         }
     }
 
-    void Awake() {
+    public int SpendableHealth {
+        get {
+            return Mathf.Clamp(health.Health - 5, 0, 195);
+        }
+    }
+
+    protected override void SingletonAwake() {
         weapons = new List<Weapon>();
         activeWeapon = -1;
     }
@@ -100,29 +106,34 @@ public class Character : SingletonMonoBehaviour<Character>
         }
     }
 
-    public void GiveWeapon(GameObject weaponPrefab) {
+    public Upgradable GiveWeapon(GameObject weaponPrefab) {
         GameObject newWeapon = Instantiate(weaponPrefab);
-        newWeapon.transform.SetParent(AimAnchor.transform);
+        newWeapon.transform.SetParent(AimAnchor.transform, false);
         newWeapon.transform.localPosition = Vector3.zero;
         newWeapon.SetActive(true);
         Weapon weaponObj = newWeapon.GetComponent<Weapon>();
         weaponObj.Target = Target;
         if (weaponObj == null) {
             Destroy(newWeapon);
-            return;
+            return null;
         }
         weapons.Add(weaponObj);
         if (activeWeapon < 0) {
             activeWeapon = 0;
         }
+        return newWeapon.GetComponent<Upgradable>();
     }
 
-    public void GivePerk(GameObject perkPrefab) {
+    public Upgradable GivePerk(GameObject perkPrefab) {
         GameObject newPerk = Instantiate(perkPrefab);
-        newPerk.transform.SetParent(PerkAnchor.transform);
+        newPerk.transform.SetParent(PerkAnchor.transform, false);
         newPerk.transform.localPosition = Vector3.zero;
         newPerk.SetActive(true);
+        return newPerk.GetComponent<Upgradable>();
     }
 
+    public void TakeDamage(int amount) {
+        health.TakeDamage(amount);
+    }
 
 }

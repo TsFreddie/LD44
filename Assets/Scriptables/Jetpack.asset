@@ -15,10 +15,11 @@ MonoBehaviour:
   Name: Jetpack
   Description: 'A normal handy jetpack.
 
-    Press {0} to use.'
+    Press W to use.'
   LevelDescription:
   - 
   - Upgrade to a bigger fuel tank.
+  - Fully upgraded
   ActionKeyNames:
   - Use Jetpack
   BuyIcon: {fileID: -2885696493302346478, guid: fdf2d725641f390438db0fe3f25dab97,

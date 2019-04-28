@@ -1,3 +1,4 @@
-public interface IUpgradable {
-    void UpgradeTo(int level);
+using UnityEngine;
+public abstract class Upgradable : MonoBehaviour {
+    public abstract void UpgradeTo(int level);
 }

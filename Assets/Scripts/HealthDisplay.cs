@@ -36,8 +36,7 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
         int targetLines = Mathf.CeilToInt(Max / (float)HeartsPerLine);
         while (targetLines > Lines.Count) {
             GameObject newLine = Instantiate(LinePrefab);
-            newLine.transform.SetParent(transform);
-            newLine.transform.localScale = Vector3.one;
+            newLine.transform.SetParent(transform, false);
             Lines.Add(newLine.transform);
         }
 
@@ -55,8 +54,7 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
                 Destroy(newHeart);
                 return;
             }
-            newHeart.transform.SetParent(Lines[line]);
-            newHeart.transform.localScale = Vector3.one;
+            newHeart.transform.SetParent(Lines[line], false);
             Hearts.Add(image);
         }
 

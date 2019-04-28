@@ -19,8 +19,9 @@ MonoBehaviour:
 
     You can pull youself towards a wall using this.
 
-    Press {0} to throw hook.'
-  LevelDescription: []
+    Right click to throw hook.'
+  LevelDescription:
+  - Bought
   ActionKeyNames:
   - Use Hook
   BuyIcon: {fileID: -7456154089533537550, guid: fdf2d725641f390438db0fe3f25dab97,

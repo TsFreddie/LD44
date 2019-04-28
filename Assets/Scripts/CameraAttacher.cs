@@ -8,7 +8,7 @@ public class CameraAttacher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.SetParent(DefaultTarget);
+        transform.SetParent(DefaultTarget, false);
         transform.localPosition = Vector3.forward * -10f;
     }
 

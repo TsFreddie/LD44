@@ -11,7 +11,11 @@ public class ShopListItem : MonoBehaviour
     public Text Price;
     public Image Icon;
     public Button Button;
+    public GameObject Heart;
     public int Index = -1;
+    
+    public delegate void ListItemButtonClicked(int index);
+    public event ListItemButtonClicked onClick;
 
     public bool CanBuy {
         set {
@@ -25,5 +29,9 @@ public class ShopListItem : MonoBehaviour
                 Button.colors = cb;
             }
         }
+    }
+
+    public void Click() {
+        onClick(Index);
     }
 }
