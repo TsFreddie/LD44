@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 1085681749}
   - component: {fileID: 1085681748}
   - component: {fileID: 1085681747}
+  - component: {fileID: 1085681751}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -558,6 +559,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085681751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085681746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb9e0cc76d872143a83cf377734900d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultTarget: {fileID: 1892922502}
 --- !u!1 &1195133685
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238478348}
+  - component: {fileID: 1238478349}
   m_Layer: 0
   m_Name: _PerkTest
   m_TagString: Untagged
@@ -636,6 +651,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238478349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238478347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b810480d1fa59ec4b9c4f4c4e8efc08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 1060221679}
+  perkPrefab: {fileID: 1562223851}
 --- !u!1 &1274608342
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,36 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7596bc0c3557da746bffd38b6950436b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1390679867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1390679868}
-  m_Layer: 9
-  m_Name: PerkAttachment
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1390679868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390679867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1892922502}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562223851
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +783,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1, y: 0.136}
+  m_Size: {x: 5, y: 0.136}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -802,8 +801,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31573edc19ae6c46a8b034b5adaa5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLength: 7.5
+  MaxLength: 10
   HookSpeed: 80
+  HookTarget:
+    serializedVersion: 2
+    m_Bits: 256
+  HookForce: 4500
+  DragMaxSpeed: 15
 --- !u!1 &1666841192
 GameObject:
   m_ObjectHideFlags: 0
@@ -131246,6 +131250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeaponAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136402252382503026, guid: 0adebf4f0c77c584f87c88902794ef3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4136402252382503027, guid: 0adebf4f0c77c584f87c88902794ef3c,
         type: 3}

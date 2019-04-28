@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Character : MonoBehaviour
 {
     public GameObject AimAnchor;
+    public GameObject PerkAnchor;
     public GameObject EyeGroup;
     public LayerMask Target;
     private List<Weapon> weapons;
@@ -92,7 +93,7 @@ public class Character : MonoBehaviour
 
     public void GivePerk(GameObject perkPrefab) {
         GameObject newPerk = Instantiate(perkPrefab);
-        newPerk.transform.SetParent(AimAnchor.transform);
+        newPerk.transform.SetParent(PerkAnchor.transform);
         newPerk.transform.localPosition = Vector3.zero;
         newPerk.SetActive(true);
     }
