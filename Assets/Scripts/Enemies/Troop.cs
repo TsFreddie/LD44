@@ -15,7 +15,8 @@ public class Troop : MonoBehaviour
     {
         walk = GetComponent<Walkable>();
         weaponControl = GetComponent<ScriptableWeaponControl>();
-        weaponControl.Weapon.Target = Target;
+        if (weaponControl.Weapon)
+            weaponControl.Weapon.Target = Target;
     }
     void Update()
     {

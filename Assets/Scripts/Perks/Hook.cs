@@ -15,10 +15,12 @@ public class Hook : MonoBehaviour
     private float length = 0;
     private Vector2 hookPos = Vector2.zero;
     private Vector2 hookDir = Vector2.zero;
+    private Character character;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponentInParent<Rigidbody2D>();
+        character = GetComponentInParent<Character>();
         sprite = GetComponent<SpriteRenderer>();
         state = 0;
         length = 0;
@@ -31,10 +33,9 @@ public class Hook : MonoBehaviour
     {
         // FIXME: prefab scale?
         transform.localScale = new Vector3(2.285f, 2.285f, 1);
-        if (state == 0 && Input.GetMouseButtonDown(1)) {
-            Vector2 mousePos = Input.mousePosition;
-            Vector2 targetPos = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
-            hookDir = (targetPos - (Vector2)transform.position).normalized;
+
+        if (state == 0 && Input.GetButtonDown("Use Hook")) {
+            hookDir = character.AimDir;
             state = 1;
         }
 
@@ -56,7 +57,7 @@ public class Hook : MonoBehaviour
         }
 
         if (state == 2) {
-            if (!Input.GetMouseButton(1)) {
+            if (!Input.GetButton("Use Hook")) {
                 state = 0;
                 length = 0;
             } else {

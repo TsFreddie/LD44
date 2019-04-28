@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Character : MonoBehaviour
+public class Character : SingletonMonoBehaviour<Character>
 {
     public GameObject AimAnchor;
     public GameObject PerkAnchor;
@@ -13,6 +13,26 @@ public class Character : MonoBehaviour
     public int activeWeapon = -1;
     private Walkable walk;
     private Damageable health;
+    private float aimAngle;
+    private Vector2 aimDir;
+    private bool facingLeft;
+
+    public Vector2 AimDir {
+        get {
+            return aimDir;
+        }
+    }
+    public float AimAngle {
+        get {
+            return aimAngle;
+        }
+    }
+
+    public bool FacingLeft {
+        get {
+            return facingLeft;
+        }
+    }
 
     void Awake() {
         weapons = new List<Weapon>();
@@ -27,6 +47,9 @@ public class Character : MonoBehaviour
         
         walk = GetComponent<Walkable>();
         health = GetComponent<Damageable>();
+        aimAngle = 0;
+        facingLeft = false;
+        aimDir = Vector2.zero;
     }
 
     void Update()
@@ -38,37 +61,40 @@ public class Character : MonoBehaviour
         Vector2 mousePos = Input.mousePosition;
         Vector2 targetPos = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 deltaPos = (targetPos - (Vector2)transform.position).normalized;
+        aimDir = deltaPos;
         EyeGroup.transform.localPosition = deltaPos * 0.15f;
         if (deltaPos.x < 0) {
+            facingLeft = true;
             AimAnchor.transform.localScale = new Vector3(1, -1, 1);
         } else {
+            facingLeft = false;
             AimAnchor.transform.localScale = new Vector3(1, 1, 1);
         }
 
-        float angleDeg = Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
+        aimAngle = Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         AimAnchor.transform.rotation = rotation;
 
         // Movement
         int move = 0;
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetButton("Move Left")) {
             move += -1;
         }
 
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetButton("Move Right")) {
             move += 1;
         }
 
         walk.Move = move;
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetButtonDown("Jump")) {
             walk.Jump();
         }
 
         if (activeWeapon >= 0) {
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetButtonDown("Fire Weapon")) {
                 weapons[activeWeapon].Firing(true);
-            } else if (Input.GetMouseButton(0)) {
+            } else if (Input.GetButton("Fire Weapon")) {
                 weapons[activeWeapon].Firing(false);
             }
         }

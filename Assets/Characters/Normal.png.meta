@@ -26,6 +26,18 @@ TextureImporter:
   - first:
       213: -7456154089533537550
     second: Rope
+  - first:
+      213: -3288778133554459303
+    second: Spark0
+  - first:
+      213: -8220475423430710098
+    second: Spark1
+  - first:
+      213: 6496771267557946096
+    second: Spark2
+  - first:
+      213: -2885696493302346478
+    second: Jetpack
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -273,8 +285,8 @@ TextureImporter:
         y: 871
         width: 106
         height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 15, y: 0, z: 36, w: 0}
       outline: []
       physicsShape: []
@@ -282,6 +294,90 @@ TextureImporter:
       bones: []
       spriteID: 8d856e8694f278b4bb16c6797d1b854d
       internalID: -7456154089533537550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spark0
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 963
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa38228fe8a71d4abf317daee2264f6
+      internalID: -3288778133554459303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spark1
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 961
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274b64443a188bc4e8725cda4429048d
+      internalID: -8220475423430710098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spark2
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 966
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a6b5abd8fb7e64ea4f9ca432583398
+      internalID: 6496771267557946096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 657
+        width: 74
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3cf330fb5a8cbe4996079b4754b49cc
+      internalID: -2885696493302346478
       vertices: []
       indices: 
       edges: []

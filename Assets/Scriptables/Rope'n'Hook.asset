@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506f13abf4ea7a8469718d4651779809, type: 3}
+  m_Name: Rope'n'Hook
+  m_EditorClassIdentifier: 
+  Name: Rope'n'Hook
+  Description: A sharp hook tied to the end of a rope. Although it's made of a conpletely
+    different material, yet you still have a vivid memory of using this.
+  LevelDescription:
+  - You can pull youself towards a wall using this. Press {0} to throw hook.
+  ActionKeyNames:
+  - Use Hook
+  BuyIcon: {fileID: -7456154089533537550, guid: fdf2d725641f390438db0fe3f25dab97,
+    type: 3}
+  Price: 07000000
+  BuyableType: 1
+  Prefab: {fileID: 7562909917949975707, guid: 67bde856d54642b46bddb04c0ec3854c, type: 3}

@@ -135,6 +135,8 @@ MonoBehaviour:
     type: 3}
   BulletSpeed: 15
   BulletLifespan: 1.5
+  PiercingCount: 2
+  RotateBullet: 1
 --- !u!1 &8973952703162145323
 GameObject:
   m_ObjectHideFlags: 0

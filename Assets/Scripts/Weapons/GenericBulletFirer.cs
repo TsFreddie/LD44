@@ -8,6 +8,8 @@ public class GenericBulletFirer : Weapon
     public GameObject BulletPrefab;
     public float BulletSpeed = 15f;
     public float BulletLifespan = 1.5f;
+    public int PiercingCount = 1;
+    public bool RotateBullet = true;
 
     public float BulletRange {
         get {
@@ -24,6 +26,8 @@ public class GenericBulletFirer : Weapon
         bulletData.Speed = BulletSpeed;
         bulletData.Lifespan = BulletLifespan;
         bulletData.Target = Target;
+        bulletData.PiercingCount = PiercingCount;
+        bulletData.RotateSprite = RotateBullet;
         return true;
     }
 
