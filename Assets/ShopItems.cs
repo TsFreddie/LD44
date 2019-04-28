@@ -26,4 +26,16 @@ public class ShopItems : MonoBehaviour
     void Update()
     {
     }
+
+    public void StartHealthBlink() {
+        if (HealthDisplay.I) {
+            HealthDisplay.I.BlinkHearts = 5;
+        }
+    }
+
+    public void StopHealthBlink() {
+        if (HealthDisplay.I) {
+            HealthDisplay.I.BlinkHearts = 0;
+        }
+    }
 }

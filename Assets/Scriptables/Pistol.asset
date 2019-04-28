@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   Name: Pistol
-  Description: A little pistol. You don't know why you have this. Press {0} to fire.
+  Description: 'A little pistol. You don''t know why you have this.
+
+    Press {0} to fire.'
   LevelDescription:
   - 
   - Bullet can pierce through up to 3 emenies.

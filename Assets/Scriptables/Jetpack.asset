@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Jetpack
   m_EditorClassIdentifier: 
   Name: Jetpack
-  Description: A normal handy jetpack. Press {0} to use.
+  Description: 'A normal handy jetpack.
+
+    Press {0} to use.'
   LevelDescription:
   - 
   - Upgrade to a bigger fuel tank.

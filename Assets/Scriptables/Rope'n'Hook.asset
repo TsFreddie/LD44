@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Rope'n'Hook
   m_EditorClassIdentifier: 
   Name: Rope'n'Hook
-  Description: A sharp hook tied to the end of a rope. Although it's made of a conpletely
+  Description: 'A sharp hook tied to the end of a rope. Although it''s made of a conpletely
     different material, yet you still have a vivid memory of using this.
-  LevelDescription:
-  - You can pull youself towards a wall using this. Press {0} to throw hook.
+
+
+    You can pull youself towards a wall using this.
+
+    Press {0} to throw hook.'
+  LevelDescription: []
   ActionKeyNames:
   - Use Hook
   BuyIcon: {fileID: -7456154089533537550, guid: fdf2d725641f390438db0fe3f25dab97,

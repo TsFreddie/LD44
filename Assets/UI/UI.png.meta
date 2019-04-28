@@ -1,12 +1,18 @@
 fileFormatVersion: 2
 guid: 9602cc43b6bfa7042a205d5ebb596069
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Heart
-    21300002: HeartEmpty
-    21300004: HeartFill
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Heart
+  - first:
+      213: 21300002
+    second: HeartEmpty
+  - first:
+      213: 21300004
+    second: HeartFill
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -113,6 +119,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b547338046726384dbee7b7190820f16
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -133,6 +140,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 75e493ef340926d43b24d350b42f0586
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -141,7 +149,7 @@ TextureImporter:
       name: HeartFill
       rect:
         serializedVersion: 2
-        x: 148
+        x: 149
         y: 951
         width: 68
         height: 68
@@ -153,6 +161,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5fb20101e6c20754fb7047b4ac4b08d3
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -161,10 +170,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: feeb6fe09fc50d845bda6433f2289eb1
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

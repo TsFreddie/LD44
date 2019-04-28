@@ -7,9 +7,13 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
 {
     public GameObject LinePrefab;
     public GameObject HeartPrefab;
+    public GameObject LockedHeartPrefab;
     public int Max = 0;
     public int Value = 0;
     public int HeartsPerLine = 10;
+    public int BlinkHearts = 0;
+    private int blinking = 0;
+    private float blinkAlpha = 1;
     private List<Transform> Lines;
     private List<Image> Hearts;
     private int filled = 0;
@@ -39,7 +43,13 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
 
         while (Max > Hearts.Count) {
             int line = Hearts.Count / HeartsPerLine;
-            GameObject newHeart = Instantiate(HeartPrefab);
+            GameObject newHeart;
+            if (Hearts.Count < 5) {
+                newHeart = Instantiate(LockedHeartPrefab);
+            } else {
+                newHeart = Instantiate(HeartPrefab);
+            }
+                
             Image image = newHeart.GetComponent<Image>();
             if (image == null) {
                 Destroy(newHeart);
@@ -77,6 +87,30 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
             if (filled < Hearts.Count) {
                 Hearts[filled].fillAmount = 0;
             }
+        }
+
+        if (blinking > 0) {
+            blinkAlpha -= 2f * Time.deltaTime;
+            if (blinkAlpha < 0) {
+                blinkAlpha = 1;
+            }
+        } else {
+            blinkAlpha = 1;
+        }
+
+        if (blinking < BlinkHearts) {
+            blinking = BlinkHearts;
+        }
+
+        while (blinking > BlinkHearts) {
+            blinking--;
+            Image image = Hearts[Hearts.Count - 1 - blinking];
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+        }
+
+        for (int i = Hearts.Count - 1; i > Hearts.Count - blinking - 1; i--) {
+            Image image = Hearts[i];
+            image.color = new Color(image.color.r, image.color.g, image.color.b, blinkAlpha);
         }
     }
 }
