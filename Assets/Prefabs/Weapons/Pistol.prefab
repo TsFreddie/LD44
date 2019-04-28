@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4136402251193503802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.787, y: -0.006, z: 0}
+  m_LocalPosition: {x: 0.659, y: 0.021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4136402252382503027}
@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4136402252382503027}
   - component: {fileID: 600537378}
+  - component: {fileID: 3467442705998217409}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -130,13 +131,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   FireType: 1
+  FireSound: {fileID: 8300000, guid: e62c09f67bd1c054c9f784b910aa186d, type: 3}
   FirePoint: {fileID: 5042670871289838362}
   BulletPrefab: {fileID: 2447613305788419826, guid: 299bbd5cabe6e4b4c9311197a8fbacd3,
     type: 3}
-  BulletSpeed: 15
-  BulletLifespan: 1.5
-  PiercingCount: 2
+  BulletSpeed: 30
+  BulletLifespan: 1
+  PiercingCount: 1
   RotateBullet: 1
+--- !u!114 &3467442705998217409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136402252382503026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81f984bbad48e64a83ee8f2319d734c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PiercingCount: 010000000300000030750000
 --- !u!1 &8973952703162145323
 GameObject:
   m_ObjectHideFlags: 0

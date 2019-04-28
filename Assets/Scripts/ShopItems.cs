@@ -15,10 +15,12 @@ public class ShopItems : MonoBehaviour
     public Button DetailButton;
     public Text DetailButtonText;
     public Text DetailButtonPrice;
+    public AudioClip SoundBuy;
     private int[] levels;
     private int selectedIndex;
     private ShopListItem[] itemPanels;
     private Upgradable[] boughtItems;
+    private new AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class ShopItems : MonoBehaviour
             data.onClick += ShowDetail;
             itemPanels[i] = data;
         }
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,8 +49,10 @@ public class ShopItems : MonoBehaviour
             Buyable item = Buyables[i];
             int buyableLevel = levels[i];
             if (buyableLevel < item.Price.Length) {
+                data.Heart.SetActive(true);
                 data.Price.text = string.Format("x{0}", item.Price[buyableLevel]);
             } else {
+                data.Heart.SetActive(false);
                 data.Price.text = "";
             }
         }
@@ -105,7 +110,9 @@ public class ShopItems : MonoBehaviour
         }
         DetailDesc.text = descText;
         DetailIcon.sprite = item.BuyIcon;
-        DetailButtonPrice.text = string.Format("x{0}", item.Price[buyableLevel]);
+        if (item.Price.Length > buyableLevel) {
+            DetailButtonPrice.text = string.Format("x{0}", item.Price[buyableLevel]);
+        }
     }
 
     public void Buy() {
@@ -126,6 +133,10 @@ public class ShopItems : MonoBehaviour
         } else if (boughtItems[selectedIndex] != null) {
             boughtItems[selectedIndex].UpgradeTo(buyableLevel);
         }
+        HealthDisplay.I.BlinkHearts = 0;
         ShowDetail(selectedIndex);
+        if (audio != null && SoundBuy != null) {
+            audio.PlayOneShot(SoundBuy);
+        }
     }
 }

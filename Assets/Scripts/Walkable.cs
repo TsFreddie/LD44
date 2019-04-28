@@ -20,9 +20,22 @@ public class Walkable : MonoBehaviour
     private int jumps;
     private bool jumping;
     private Vector3 groundCheckPoint;
+    private Animator animator;
     public int Move {
         set {
             this.move = value;
+        }
+    }
+
+    public bool Grounded {
+        get {
+            return grounded;
+        }
+    }
+
+    public bool CanJump {
+        get {
+            return jumps > 0;
         }
     }
 
@@ -39,6 +52,8 @@ public class Walkable : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        if (animator != null) animator.logWarnings = false;
         move = 0;
         jumps = 0;
         grounded = false;
@@ -63,6 +78,9 @@ public class Walkable : MonoBehaviour
                 jumps--;
             }
         }
+
+        if (animator != null) 
+            animator.SetInteger("Move", move);
     }
 
     void FixedUpdate() {

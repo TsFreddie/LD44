@@ -9,6 +9,11 @@ public class Character : SingletonMonoBehaviour<Character>
     public GameObject PerkAnchor;
     public GameObject EyeGroup;
     public LayerMask Target;
+    public AudioClip SoundGainHeart;
+    public AudioClip SoundTakeDamage;
+    public AudioClip SoundJump;
+    public AudioClip SoundAirJump;
+    public AudioClip SoundSwitchWeapon;
     private List<Weapon> weapons;
     public int activeWeapon = -1;
     private Walkable walk;
@@ -16,6 +21,8 @@ public class Character : SingletonMonoBehaviour<Character>
     private float aimAngle;
     private Vector2 aimDir;
     private bool facingLeft;
+    private float nextHeart;
+    private new AudioSource audio;
 
     public Vector2 AimDir {
         get {
@@ -53,6 +60,7 @@ public class Character : SingletonMonoBehaviour<Character>
         
         walk = GetComponent<Walkable>();
         health = GetComponent<Damageable>();
+        audio = GetComponent<AudioSource>();
         aimAngle = 0;
         facingLeft = false;
         aimDir = Vector2.zero;
@@ -60,9 +68,16 @@ public class Character : SingletonMonoBehaviour<Character>
 
     void Update()
     {
+        if (health.Health < health.MaxHealth && nextHeart > 1f) {
+            nextHeart = 0f;
+            health.Health += 1;
+            audio.PlayOneShot(SoundGainHeart);
+        }
+
         if (HealthDisplay.I) {
             HealthDisplay.I.Max = health.MaxHealth;
             HealthDisplay.I.Value = health.Health;
+            HealthDisplay.I.NextHeart = nextHeart;
         }
         Vector2 mousePos = Input.mousePosition;
         Vector2 targetPos = (Vector2)Camera.main.ScreenToWorldPoint(mousePos);
@@ -94,6 +109,13 @@ public class Character : SingletonMonoBehaviour<Character>
         walk.Move = move;
 
         if (Input.GetButtonDown("Jump")) {
+            if (walk.CanJump) {
+                if (walk.Grounded) {
+                    audio.PlayOneShot(SoundJump);
+                } else {
+                    audio.PlayOneShot(SoundAirJump);
+                }
+            }
             walk.Jump();
         }
 
@@ -136,4 +158,20 @@ public class Character : SingletonMonoBehaviour<Character>
         health.TakeDamage(amount);
     }
 
+    public void ReportKill(float growAmount) {
+        // TODO: gain heart;
+    }
+
+    public void Died() {
+        // TODO: Gameover
+    }
+
+    public void GainMaxHearts(int amount) {
+        int target = health.MaxHealth + amount;
+        if (target > 200) {
+            target = 200;
+        }
+        health.MaxHealth = target;
+        health.Health = target;
+    }
 }

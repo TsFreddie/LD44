@@ -15,10 +15,10 @@ TagManager:
   - 
   - Ground
   - Player
-  - Ground
+  - Enemy
   - Corpse
   - Unhookable
-  - 
+  - SpawnArea
   - 
   - 
   - 

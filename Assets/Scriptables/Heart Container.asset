@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 506f13abf4ea7a8469718d4651779809, type: 3}
+  m_Name: Heart Container
+  m_EditorClassIdentifier: 
+  Name: Heart Container
+  Description: Empty heart. Despite the potential you gain, you feel much weaker.
+  LevelDescription:
+  - Gain 1 heart container.
+  - Gain 2 heart container.
+  - Gain 4 heart container.
+  - Gain 8 heart container.
+  - Gain 16 heart container.
+  - Gain 32 heart container.
+  - Gain 63 heart container.
+  - Gain 64 heart container.
+  ActionKeyNames: []
+  BuyIcon: {fileID: 21300002, guid: 9602cc43b6bfa7042a205d5ebb596069, type: 3}
+  Price: 0200000004000000080000001000000018000000200000004000000064000000
+  BuyableType: 1
+  Prefab: {fileID: 5777857847332223252, guid: 41a6a479ef30fc549ace19f09ac8292c, type: 3}

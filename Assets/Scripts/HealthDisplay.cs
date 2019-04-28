@@ -17,6 +17,7 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
     private List<Transform> Lines;
     private List<Image> Hearts;
     private int filled = 0;
+    public float NextHeart = 0;
     
     protected override void SingletonAwake() {
         Lines = new List<Transform>();
@@ -87,8 +88,13 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
             }
         }
 
+        if (filled < Hearts.Count) {
+            Hearts[filled].fillAmount = NextHeart;
+        }
+
+
         if (blinking > 0) {
-            blinkAlpha -= 2f * Time.deltaTime;
+            blinkAlpha -= 2f * Time.unscaledDeltaTime;
             if (blinkAlpha < 0) {
                 blinkAlpha = 1;
             }
@@ -102,12 +108,12 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
 
         while (blinking > BlinkHearts) {
             blinking--;
-            Image image = Hearts[Hearts.Count - 1 - blinking];
+            Image image = Hearts[filled - blinking - 1];
             image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
         }
 
-        for (int i = Hearts.Count - 1; i > Hearts.Count - blinking - 1; i--) {
-            Image image = Hearts[i];
+        for (int i = 0; i < blinking; i++) {
+            Image image = Hearts[filled - i - 1];
             image.color = new Color(image.color.r, image.color.g, image.color.b, blinkAlpha);
         }
     }

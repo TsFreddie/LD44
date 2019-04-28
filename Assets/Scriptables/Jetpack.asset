@@ -24,6 +24,6 @@ MonoBehaviour:
   - Use Jetpack
   BuyIcon: {fileID: -2885696493302346478, guid: fdf2d725641f390438db0fe3f25dab97,
     type: 3}
-  Price: 0a0000000a000000
+  Price: 0a00000032000000
   BuyableType: 1
   Prefab: {fileID: 5730749979484470086, guid: c96ea07d2405a6a4f8914292a6bcc1c6, type: 3}

@@ -21,6 +21,7 @@ public class MenuAction : MonoBehaviour
     }
 
     public void ToggleShop() {
+        HealthDisplay.I.BlinkHearts = 0;
         Shop.SetActive(!Shop.activeSelf);
         ShopNotice.SetActive(!Shop.activeSelf);
         if (Shop.activeSelf) {
