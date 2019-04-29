@@ -7,32 +7,23 @@ public class GenericProjectileFirer : Weapon
     public Transform FirePoint;
     public GameObject BulletPrefab;
     public float BulletSpeed = 15f;
-    public float BulletLifespan = 1.5f;
-    public int PiercingCount = 1;
-    public bool RotateBullet = true;
-
-    public float BulletRange {
-        get {
-            return BulletSpeed * BulletLifespan;
-        }
-    }
+    public float ExplodeTime = 1f;
+    public float ExplosionRadius = 1.5f;
+    public Sprite ExplosionSprite;
+    public bool ExplodeOnGround = true;
 
     protected override bool OnFire() {
         GameObject newBullet = Instantiate(BulletPrefab);
         newBullet.transform.position = FirePoint.position;
-        NormalBullet bulletData = newBullet.AddComponent<NormalBullet>();
+        ProjectileBullet bulletData = newBullet.AddComponent<ProjectileBullet>();
         bulletData.Damage = Damage;
         bulletData.FireAngle = transform.rotation.eulerAngles.z;
         bulletData.Speed = BulletSpeed;
-        bulletData.Lifespan = BulletLifespan;
+        bulletData.ExplodeTime = ExplodeTime;
         bulletData.Target = Target;
-        bulletData.PiercingCount = PiercingCount;
-        bulletData.RotateSprite = RotateBullet;
+        bulletData.ExplodeOnGround = ExplodeOnGround;
+        bulletData.ExplosionRadius = ExplosionRadius;
+        bulletData.ExplosionSprite = ExplosionSprite;
         return true;
-    }
-
-    void OnDrawGizmosSelected() {
-        Vector2 line = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
-        Gizmos.DrawLine((Vector2)FirePoint.position, (Vector2)FirePoint.position + line * BulletRange);
     }
 }

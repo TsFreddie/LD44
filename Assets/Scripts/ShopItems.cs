@@ -58,6 +58,7 @@ public class ShopItems : MonoBehaviour
         }
     }
 
+    /*
     public void StartHealthBlink() {
         if (!DetailButton.interactable) {
             return;
@@ -81,6 +82,7 @@ public class ShopItems : MonoBehaviour
             HealthDisplay.I.BlinkHearts = 0;
         }
     }
+    */
 
     public void ShowDetail(int index) {
         selectedIndex = index;
@@ -90,9 +92,18 @@ public class ShopItems : MonoBehaviour
         // Price
         if (item.Price.Length <= buyableLevel) {
             DetailButton.gameObject.SetActive(false);
+            HealthDisplay.I.BlinkHearts = 0;
         } else {
             DetailButton.gameObject.SetActive(true);
-            DetailButton.interactable = Character.I.SpendableHealth >= item.Price[buyableLevel];
+            if (Character.I.SpendableHealth >= item.Price[buyableLevel]) {
+                HealthDisplay.I.BlinkHearts = item.Price[buyableLevel];
+                DetailButton.interactable = true;
+            } else {
+                HealthDisplay.I.BlinkHearts = 0;
+                DetailButton.interactable = false;
+            }
+
+            
         }
 
         if (buyableLevel == 0) {
@@ -124,6 +135,7 @@ public class ShopItems : MonoBehaviour
         }
         levels[selectedIndex]++;
         int price = item.Price[buyableLevel];
+        Character.I.TakeDamage(price);
         if (buyableLevel == 0) {
             if (item.BuyableType == BuyableType.Weapon) {
                 boughtItems[selectedIndex] = Character.I.GiveWeapon(item.Prefab);
@@ -133,7 +145,6 @@ public class ShopItems : MonoBehaviour
         } else if (boughtItems[selectedIndex] != null) {
             boughtItems[selectedIndex].UpgradeTo(buyableLevel);
         }
-        HealthDisplay.I.BlinkHearts = 0;
         ShowDetail(selectedIndex);
         if (audio != null && SoundBuy != null) {
             audio.PlayOneShot(SoundBuy);

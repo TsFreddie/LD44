@@ -68,12 +68,6 @@ public class Character : SingletonMonoBehaviour<Character>
 
     void Update()
     {
-        if (health.Health < health.MaxHealth && nextHeart > 1f) {
-            nextHeart = 0f;
-            health.Health += 1;
-            audio.PlayOneShot(SoundGainHeart);
-        }
-
         if (HealthDisplay.I) {
             HealthDisplay.I.Max = health.MaxHealth;
             HealthDisplay.I.Value = health.Health;
@@ -96,7 +90,15 @@ public class Character : SingletonMonoBehaviour<Character>
         Quaternion rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         AimAnchor.transform.rotation = rotation;
 
+       if (Input.GetButtonDown("Dodge")) {
+            ReportKill(200f);
+        }
+
+        if (Time.timeScale < 0.1f) {
+            return;
+        }
         // Movement
+                 
         int move = 0;
         if (Input.GetButton("Move Left")) {
             move += -1;
@@ -126,6 +128,10 @@ public class Character : SingletonMonoBehaviour<Character>
                 weapons[activeWeapon].Firing(false);
             }
         }
+
+        if (Input.GetButtonDown("Switch Weapon")) {
+            SwitchWeapon();
+        }
     }
 
     public Upgradable GiveWeapon(GameObject weaponPrefab) {
@@ -142,6 +148,9 @@ public class Character : SingletonMonoBehaviour<Character>
         weapons.Add(weaponObj);
         if (activeWeapon < 0) {
             activeWeapon = 0;
+        } else {
+            weapons[activeWeapon].gameObject.SetActive(false);
+            activeWeapon = 1;
         }
         return newWeapon.GetComponent<Upgradable>();
     }
@@ -159,7 +168,20 @@ public class Character : SingletonMonoBehaviour<Character>
     }
 
     public void ReportKill(float growAmount) {
-        // TODO: gain heart;
+        if (health.Health >= health.MaxHealth) {
+            return;
+        }
+
+        nextHeart += growAmount;
+        while (nextHeart > 1f) {
+            nextHeart -= -1f;
+            health.Health += 1;
+            if (health.Health >= health.MaxHealth) {
+                health.Health = health.MaxHealth;
+                break;
+            }
+        }
+        audio.PlayOneShot(SoundGainHeart);
     }
 
     public void Died() {
@@ -172,6 +194,19 @@ public class Character : SingletonMonoBehaviour<Character>
             target = 200;
         }
         health.MaxHealth = target;
-        health.Health = target;
+    }
+
+    public void SwitchWeapon() {
+        if (weapons.Count < 2) {
+            return;
+        }
+        audio.PlayOneShot(SoundSwitchWeapon);
+        weapons[activeWeapon].gameObject.SetActive(false);
+        if (activeWeapon == 0) {
+            activeWeapon = 1;
+        } else {
+            activeWeapon = 0;
+        }
+        weapons[activeWeapon].gameObject.SetActive(true);
     }
 }

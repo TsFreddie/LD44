@@ -23,35 +23,36 @@ public class NormalBullet : MonoBehaviour, IBullet
         Destroy(this.gameObject);
     }
 
-    private float colliderLength;
-    private new BoxCollider2D collider;
+    private new Collider2D collider;
     void Start() {
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<Collider2D>();
         hitSet = new HashSet<Collider2D>();
         if (!collider) {
             Destroy(this.gameObject);
             return;
         }
-        colliderLength = collider.size.x;
         Target |= 1 << LayerMask.NameToLayer("Ground");
         Target |= 1 << LayerMask.NameToLayer("Unhookable");
     }
     void Update()
     {
-        if (RotateSprite) {
-            transform.rotation = Quaternion.AngleAxis(FireAngle, Vector3.forward);
-            transform.Translate(Vector3.right * Time.deltaTime * Speed, Space.Self);
-        }
+        transform.rotation = Quaternion.AngleAxis(FireAngle, Vector3.forward);
+        transform.Translate(Vector3.right * Time.deltaTime * Speed, Space.Self);
         Lifespan -= Time.deltaTime;
         if (Lifespan < 0) {
             Destroy(this.gameObject);
         }
-
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, collider.size, transform.eulerAngles.z, Target);
+        Collider2D[] hits = new Collider2D[3];
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(Target);
+        Physics2D.OverlapCollider(collider, contactFilter, hits);
         if (hits.Length > 0) {
             bool forceDestroy = false;
             bool hitTarget = false;
             foreach (Collider2D hit in hits) {
+                if (hit == null) {
+                    break;
+                }
                 if (hitSet.Contains(hit)) {
                     continue;
                 }

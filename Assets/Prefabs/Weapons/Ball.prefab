@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7562909917949975707
+--- !u!1 &7408089833227955937
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7562909917949975708}
-  - component: {fileID: 7562909917949975709}
-  - component: {fileID: 7562909917949975710}
+  - component: {fileID: 2844868261127644302}
+  - component: {fileID: 5298133810271040598}
+  - component: {fileID: -2263178279706293421}
   m_Layer: 0
-  m_Name: Rope
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7562909917949975708
+  m_IsActive: 1
+--- !u!4 &2844868261127644302
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562909917949975707}
+  m_GameObject: {fileID: 7408089833227955937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.285, y: 2.285, z: 1}
+  m_LocalPosition: {x: -1.2620181, y: 2.255724, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7562909917949975709
+--- !u!212 &5298133810271040598
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562909917949975707}
+  m_GameObject: {fileID: 7408089833227955937}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -68,37 +68,32 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -7456154089533537550, guid: fdf2d725641f390438db0fe3f25dab97,
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1503048217320252711, guid: e1e404845abfa2b4687efbdff1af5970,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 0.8, y: 0.136}
+  m_DrawMode: 0
+  m_Size: {x: 0.57, y: 0.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7562909917949975710
-MonoBehaviour:
+--- !u!58 &-2263178279706293421
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562909917949975707}
+  m_GameObject: {fileID: 7408089833227955937}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31573edc19ae6c46a8b034b5adaa5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxLength: 10
-  HookSpeed: 80
-  HookTarget:
-    serializedVersion: 2
-    m_Bits: 256
-  HookForce: 4500
-  DragMaxSpeed: 15
-  HookSound: {fileID: 8300000, guid: 8763e634c93c4de46b3f9a3a680f799e, type: 3}
-  HookFailedSound: {fileID: 8300000, guid: 5c01aa3aa9e6dde489927323cde7b7de, type: 3}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.285

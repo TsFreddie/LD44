@@ -11,7 +11,6 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
     public int Max = 0;
     public int Value = 0;
     public int HeartsPerLine = 10;
-    public int BlinkHearts = 0;
     private int blinking = 0;
     private float blinkAlpha = 1;
     private List<Transform> Lines;
@@ -22,6 +21,18 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
     protected override void SingletonAwake() {
         Lines = new List<Transform>();
         Hearts = new List<Image>();
+    }
+
+    public int BlinkHearts {
+        get {
+            return blinking;
+        }
+        set {
+            blinking = value;
+            foreach (Image image in Hearts) {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+            }
+        }
     }
     void Start()
     {
@@ -73,7 +84,16 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
         if (Value < 0) {
             Value = 0;
         }
-        
+
+        for (int i = 0; i < Hearts.Count; i++) {
+            if (i < Value) {
+                Hearts[i].fillAmount = 1;
+            } else {
+                Hearts[i].fillAmount = 0;
+            }
+        }
+
+        /*
         while (filled < Value) {
             if (filled < Hearts.Count) {
                 Hearts[filled].fillAmount = 1;
@@ -91,8 +111,7 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
         if (filled < Hearts.Count) {
             Hearts[filled].fillAmount = NextHeart;
         }
-
-
+        */
         if (blinking > 0) {
             blinkAlpha -= 2f * Time.unscaledDeltaTime;
             if (blinkAlpha < 0) {
@@ -102,18 +121,8 @@ public class HealthDisplay : SingletonMonoBehaviour<HealthDisplay>
             blinkAlpha = 1;
         }
 
-        if (blinking < BlinkHearts) {
-            blinking = BlinkHearts;
-        }
-
-        while (blinking > BlinkHearts) {
-            blinking--;
-            Image image = Hearts[filled - blinking - 1];
-            image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
-        }
-
         for (int i = 0; i < blinking; i++) {
-            Image image = Hearts[filled - i - 1];
+            Image image = Hearts[Value - i - 1];
             image.color = new Color(image.color.r, image.color.g, image.color.b, blinkAlpha);
         }
     }

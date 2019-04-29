@@ -9,6 +9,8 @@ public class Hook : MonoBehaviour
     public LayerMask HookTarget;
     public float HookForce = 500f;
     public float DragMaxSpeed = 15.0f;
+    public AudioClip HookSound;
+    public AudioClip HookFailedSound;
     private new Rigidbody2D rigidbody;
     private SpriteRenderer sprite;
     private int state = 0;
@@ -16,12 +18,14 @@ public class Hook : MonoBehaviour
     private Vector2 hookPos = Vector2.zero;
     private Vector2 hookDir = Vector2.zero;
     private Character character;
+    private new AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponentInParent<Rigidbody2D>();
         character = GetComponentInParent<Character>();
         sprite = GetComponent<SpriteRenderer>();
+        audio = GetComponentInParent<AudioSource>();
         state = 0;
         length = 0;
         hookPos = Vector2.zero;
@@ -32,7 +36,7 @@ public class Hook : MonoBehaviour
     void Update()
     {
         // FIXME: prefab scale?
-        // transform.localScale = new Vector3(2.285f, 2.285f, 1);
+        transform.localScale = new Vector3(2.285f, 2.285f, 1);
 
         if (state == 0 && Input.GetButtonDown("Use Hook")) {
             hookDir = character.AimDir;
@@ -46,10 +50,17 @@ public class Hook : MonoBehaviour
                 state = 0;
             }
             hookPos = (Vector2)(transform.position) + hookDir * length;
-            RaycastHit2D hit = Physics2D.Linecast(transform.position, hookPos, HookTarget);
+            RaycastHit2D hit = Physics2D.Linecast(transform.position, hookPos, HookTarget | 1 << LayerMask.NameToLayer("Unhookable"));
             if (hit.collider != null) {
-                hookPos = hit.point;
-                state = 2;
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Unhookable")) {
+                    hookPos = hit.point;
+                    state = 0;
+                    audio.PlayOneShot(HookFailedSound);
+                } else {
+                    hookPos = hit.point;
+                    state = 2;
+                    audio.PlayOneShot(HookSound);
+                }
             };
             if (state == 0) {
                 length = 0;
